@@ -3,10 +3,8 @@ import { SEO } from "astro-seo";
 import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar/navbar.astro";
 import "@fontsource-variable/inter/index.css";
-import '@fontsource-variable/bricolage-grotesque';
-
-
-
+import "@fontsource-variable/bricolage-grotesque";
+import DriversTour from "@components/navbar/DriversTour.astro";
 export interface Props {
   title: string;
 }
@@ -15,17 +13,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 const resolvedImageWithDomain = new URL(
   "/opengraph.jpg",
-  Astro.site
+  Astro.site,
 ).toString();
 
 const { title } = Astro.props;
 
 const makeTitle = title
-  ? title + " | " + "Astroship"
+  ? `${title} | Astroship`
   : "Astroship - Starter Template for Astro with Tailwind CSS";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -57,9 +55,11 @@ const makeTitle = title
     />
   </head>
   <body>
-    <Navbar />
-    <slot />
-    <Footer />
+    <DriversTour>
+      <Navbar />
+      <slot />
+      <Footer />
+    </DriversTour>
     <style is:global>
       /* Improve Page speed */
       /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
@@ -67,5 +67,7 @@ const makeTitle = title
         content-visibility: auto;
       }
     </style>
+
+    <script defer src="/js/main.js"></script>
   </body>
 </html>

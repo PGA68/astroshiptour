@@ -1,0 +1,35 @@
+---
+import "driver.js/dist/driver.css";
+---
+
+<div>
+<slot />
+  <script>
+    import { driver } from "driver.js";
+
+
+
+    // const driverObj = driver()
+
+    // driverObj.highlight({
+    //   element: "#some-element",
+    //   popover: {
+    //     title: "Title",
+    //     description: "Description",
+    //   },
+    // });
+
+    const driverObj = driver({
+  showProgress: true,
+  steps: [
+    { element: '.text-lg', popover: { title: 'Логотип', description: 'Не всё коту масленица' } },
+    { element: '.astronav-items', popover: { title: 'Основное меню', description: 'Семь раз отмерь, один раз кликни' } },
+    { element: '#authbuttons', popover: { title: 'Авторизация', description: 'Направо пойдёшь в суверены попадёшь' } },
+    { element: '.bigflash', popover: { title: 'Большой заголовок', description: 'Мимо не пройдёшь' } },
+  ]
+});
+
+driverObj.drive();
+  </script>
+
+</div>
