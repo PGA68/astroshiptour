@@ -1,0 +1,75 @@
+---
+import { Debug } from "astro:components";
+import "driver.js/dist/driver.css";
+---
+
+<script is:inline>
+  top.hashp = document.location.hash;
+  console.log(top.hashp);
+</script>
+<div>
+  <slot />
+  <script>
+    import { driver } from "driver.js";
+
+    // const driverObj = driver()
+
+    // driverObj.highlight({
+    //   element: "#some-element",
+    //   popover: {
+    //     title: "Title",
+    //     description: "Description",
+    //   },
+    // });
+
+    function get1run() {
+      const driverObj = driver({
+        showProgress: true,
+        steps: [
+          {
+            element: ".text-lg",
+            popover: { title: "Логотип", description: "Не всё коту масленица" },
+          },
+          {
+            element: ".astronav-items",
+            popover: {
+              title: "Основное меню",
+              description: "Семь раз отмерь, один раз кликни",
+            },
+          },
+          {
+            element: "#authbuttons",
+            popover: {
+              title: "Авторизация",
+              description: "Направо пойдёшь в суверены попадёшь",
+            },
+          },
+          {
+            element: ".bigflash",
+            popover: {
+              title: "Большой заголовок",
+              description: "Мимо не пройдёшь",
+            },
+          },
+        ],
+      });
+      driverObj.drive();
+    }
+
+    function get2run() {
+      console.log("tourguide");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      switch (document.location.hash) {
+        case "#driverjs":
+          get1run();
+          break;
+        case "#tourguide":
+          get2run();
+          break;
+        default:
+      }
+    });
+  </script>
+</div>
