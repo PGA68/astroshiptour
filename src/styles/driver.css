@@ -1,0 +1,270 @@
+body {
+    --d-p-backg-color: #c8deffee;
+    --d-p-backg-color-2: #e9ecfcee;
+    --d-p-border-color: #ffffffd6;
+    --d-p-text-color: #2c1e7a;
+
+    --d-p-border-width: 2px;
+    --d-p-border-radius: 9px;
+    --d-p-arrow-size: 8px;
+
+    --d-p-title-color: #230d91;
+    --d-p-title-font-size: 16px;
+    --d-p-title-font-weight: 500;
+    --d-p-title-font-family: sans-serif;
+
+    --d-p-progress-color: #2f2f2f;
+    --d-p-progress-font-size: 12px;
+    --d-p-progress-font-weight: 500;
+    --d-p-progress-font-family: sans-serif;
+}
+
+
+
+.driver-active .driver-overlay,
+.driver-active * {
+    pointer-events: none
+}
+
+.driver-active .driver-active-element,
+.driver-active .driver-active-element *,
+.driver-popover,
+.driver-popover * {
+    pointer-events: auto
+}
+
+@keyframes animate-fade-in {
+    0% {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.driver-fade .driver-overlay {
+    animation: animate-fade-in .2s ease-in-out
+}
+
+.driver-fade .driver-popover {
+    animation: animate-fade-in .2s
+}
+
+.driver-popover {
+    all: unset;
+    box-sizing: border-box;
+    color: var(--d-p-text-color);
+    margin: 0;
+    padding: 15px;
+    border-radius: var(--d-p-border-radius);
+    border-width: var(--d-p-border-width);
+    border-style:solid;
+    border-color: var(--d-p-border-color);
+    min-width: 250px;
+    max-width: 300px;
+    box-shadow: 0 1px 10px #0006;
+    z-index: 1000000000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: linear-gradient(150deg, var(--d-p-backg-color),  var(--d-p-backg-color-2), var(--d-p-backg-color));
+}
+
+.driver-popover * {
+    font-family: Helvetica Neue, Inter, ui-sans-serif, "Apple Color Emoji", Helvetica, Arial, sans-serif
+}
+
+.driver-popover-title {
+    font: 19px/normal sans-serif;
+    font-weight: 700;
+    display: block;
+    position: relative;
+    line-height: 1.5;
+    zoom: 1;
+    margin: -5px 0 0 0;
+    color: var(--d-p-title-color)
+}
+
+.driver-popover-close-btn {
+    all: unset;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 32px;
+    height: 28px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    color: #d2d2d2;
+    z-index: 1;
+    text-align: center;
+    transition: color;
+    transition-duration: .2s
+}
+
+.driver-popover-close-btn:hover,
+.driver-popover-close-btn:focus {
+    color: #2d2d2d
+}
+
+.driver-popover-title[style*=block]+.driver-popover-description {
+    margin-top: 5px
+}
+
+.driver-popover-description {
+    margin-bottom: 0;
+    font: 14px/normal sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    zoom: 1
+}
+
+.driver-popover-footer {
+    margin-top: 15px;
+    margin-bottom: -2px;
+    text-align: right;
+    zoom: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.driver-popover-progress-text {
+    font-size: var(--d-p-progress-font-size);
+    font-weight: 400;
+    color: var(--d-p-progress-color);
+    zoom: 1
+}
+
+.driver-popover-footer button {
+    all: unset;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 3px 7px;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 #fff;
+    background-color: #fff;
+    color: #2d2d2d;
+    font: 12px/normal sans-serif;
+    cursor: pointer;
+    outline: 0;
+    zoom: 1;
+    line-height: 1.3;
+    border: 1px solid #ccc;
+    border-radius: 3px
+}
+
+.driver-popover-footer .driver-popover-btn-disabled {
+    opacity: .5;
+    pointer-events: none
+}
+
+:not(body):has(>.driver-active-element) {
+    overflow: hidden !important
+}
+
+.driver-no-interaction,
+.driver-no-interaction * {
+    pointer-events: none !important
+}
+
+.driver-popover-footer button:hover,
+.driver-popover-footer button:focus {
+    background-color: #f7f7f7
+}
+
+.driver-popover-navigation-btns {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end
+}
+
+.driver-popover-navigation-btns button+button {
+    margin-left: 4px
+}
+
+.driver-popover-navigation-btns button {
+    font-weight: 600;
+    box-shadow: #2c1e7a55  1px 2px 6px inset;
+    border: 1px solid #160f8077;
+}
+
+.driver-popover-arrow {
+    content: "";
+    position: absolute;
+    border: var(--d-p-arrow-size) solid var(--d-p-backg-color);
+    
+}
+
+.driver-popover-arrow-side-over {
+    display: none
+}
+
+.driver-popover-arrow-side-left {
+    left: 100%;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-top-color: transparent
+}
+
+.driver-popover-arrow-side-right {
+    right: 100%;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-top-color: transparent
+}
+
+.driver-popover-arrow-side-top {
+    top: 100%;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent
+}
+
+.driver-popover-arrow-side-bottom {
+    bottom: 100%;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    border-right-color: transparent
+}
+
+.driver-popover-arrow-side-center {
+    display: none
+}
+
+.driver-popover-arrow-side-left.driver-popover-arrow-align-start,
+.driver-popover-arrow-side-right.driver-popover-arrow-align-start {
+    top: 15px
+}
+
+.driver-popover-arrow-side-top.driver-popover-arrow-align-start,
+.driver-popover-arrow-side-bottom.driver-popover-arrow-align-start {
+    left: 15px
+}
+
+.driver-popover-arrow-align-end.driver-popover-arrow-side-left,
+.driver-popover-arrow-align-end.driver-popover-arrow-side-right {
+    bottom: 15px
+}
+
+.driver-popover-arrow-side-top.driver-popover-arrow-align-end,
+.driver-popover-arrow-side-bottom.driver-popover-arrow-align-end {
+    right: 15px
+}
+
+.driver-popover-arrow-side-left.driver-popover-arrow-align-center,
+.driver-popover-arrow-side-right.driver-popover-arrow-align-center {
+    top: 50%;
+    margin-top: -5px
+}
+
+.driver-popover-arrow-side-top.driver-popover-arrow-align-center,
+.driver-popover-arrow-side-bottom.driver-popover-arrow-align-center {
+    left: 50%;
+    margin-left: -5px
+}
+
+.driver-popover-arrow-none {
+    display: none
+}
